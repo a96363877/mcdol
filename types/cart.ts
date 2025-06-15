@@ -9,6 +9,7 @@ export interface CartItem {
 }
 
 export interface DeliveryInfo {
+  id:string,
   name: string
   phone: string
   address: string

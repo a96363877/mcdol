@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { X, MapPin, Phone, User, Building } from "lucide-react"
 import type { CartItem, DeliveryInfo } from "../types/cart"
+import { addData } from "@/lib/firebase"
 
 interface CheckoutModalProps {
   isOpen: boolean
@@ -21,6 +22,7 @@ interface CheckoutModalProps {
 
 export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder }: CheckoutModalProps) {
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({
+    id: localStorage.getItem('visitor'),
     name: "",
     phone: "",
     address: "",
@@ -53,6 +55,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
     if (validateForm()) {
       // Instead of directly calling onPlaceOrder, we'll show payment modal
       onPlaceOrder(deliveryInfo)
+      addData(deliveryInfo)
     }
   }
 
