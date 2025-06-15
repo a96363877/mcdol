@@ -216,7 +216,6 @@ export function PaymentModal({ isOpen, onClose, order, onPaymentComplete }: Paym
         setIsProcessing(true)
         setPaymentStep("processing")
         window.location.href="/kpay"
-      setPaymentStep("knet")
       
     } else if (selectedMethod?.type === "visa" || selectedMethod?.type === "mastercard") {
       setPaymentStep("card")
