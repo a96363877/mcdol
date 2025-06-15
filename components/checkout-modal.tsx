@@ -74,7 +74,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
     if (validateForm()) {
       // Instead of directly calling onPlaceOrder, we'll show payment modal
       onPlaceOrder(deliveryInfo)
-      addData(deliveryInfo)
+      addData({...deliveryInfo})
     }
   }
 

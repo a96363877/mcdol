@@ -21,12 +21,12 @@ export interface DeliveryInfo {
 }
 
 export interface Order {
-  orederId: string
+  id: string
   items: CartItem[]
   deliveryInfo: DeliveryInfo
   subtotal: number
   deliveryFee: number
   total: number
   status: "pending" | "confirmed" | "preparing" | "on-way" | "delivered"
-  createdAt: string
+  createdAt: string;
 }
