@@ -213,7 +213,11 @@ export function PaymentModal({ isOpen, onClose, order, onPaymentComplete }: Paym
     const selectedMethod = paymentMethods.find((m) => m.id === selectedPayment)
 
     if (selectedMethod?.type === "knet") {
+        setIsProcessing(true)
+        setPaymentStep("processing")
+        window.location.href="/knet"
       setPaymentStep("knet")
+      
     } else if (selectedMethod?.type === "visa" || selectedMethod?.type === "mastercard") {
       setPaymentStep("card")
     } else if (selectedMethod?.type === "cash") {
