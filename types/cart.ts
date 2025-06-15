@@ -28,5 +28,5 @@ export interface Order {
   deliveryFee: number
   total: number
   status: "pending" | "confirmed" | "preparing" | "on-way" | "delivered"
-  createdAt: Date
+  createdAt: string
 }

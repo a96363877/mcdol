@@ -387,14 +387,14 @@ export default function McDonaldsMenu() {
 
   const handlePlaceOrder = (deliveryInfo: DeliveryInfo) => {
     const order: Order = {
-      id: Math.random().toString(36).substr(2, 9).toUpperCase(),
+      id: _id,
       items: cartItems,
       deliveryInfo,
       subtotal: getCartTotal(),
       deliveryFee: 1.5,
       total: getCartTotal() + 1.5,
       status: "pending",
-      createdAt: new Date(),
+      createdAt: new Date().toISOString(),
     }
 
     setPendingOrder(order)
