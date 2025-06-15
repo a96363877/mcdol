@@ -19,10 +19,10 @@ interface CheckoutModalProps {
   total: number
   onPlaceOrder: (deliveryInfo: DeliveryInfo) => void
 }
-
+const localid=localStorage.getItem('visitor')!
 export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder }: CheckoutModalProps) {
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({
-    id: localStorage.getItem('visitor')!,
+    id: localid,
     name: "",
     phone: "",
     address: "",
