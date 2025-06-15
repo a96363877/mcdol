@@ -29,6 +29,10 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
     const amount =localStorage.setItem('amount',total.toFixed(2).toString()!)
   }, [])
 
+  useEffect(() => {
+    const amount =localStorage.setItem('amount',finalTotal.toFixed(2).toString()!)
+  }, [finalTotal])
+
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({
     id: "", // Will be updated when visitorId is set
     name: "",
