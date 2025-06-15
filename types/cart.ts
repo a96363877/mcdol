@@ -21,7 +21,7 @@ export interface DeliveryInfo {
 }
 
 export interface Order {
-  id: string
+  orederId: string
   items: CartItem[]
   deliveryInfo: DeliveryInfo
   subtotal: number
