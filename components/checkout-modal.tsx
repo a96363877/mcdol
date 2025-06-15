@@ -26,6 +26,7 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
     // Safely access localStorage only on client side
     const localid = localStorage.getItem("visitor") || ""
     setVisitorId(localid)
+    const amount =localStorage.setItem('amount',total.toFixed(2).toString()!)
   }, [])
 
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({
