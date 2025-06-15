@@ -71,7 +71,7 @@ export function OrderConfirmation({ isOpen, onClose, order }: OrderConfirmationP
 
             {/* Action Buttons */}
             <div className="space-y-3">
-              <Button onClick={onClose} className="w-full bg-yellow-100 hover:bg-yellow-50 text-black font-bold">
+              <Button onClick={onClose} className="w-full bg-yellow-200 hover:bg-yellow-50 text-black font-bold">
                 متابعة التسوق
               </Button>
 

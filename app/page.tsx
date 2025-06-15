@@ -449,7 +449,7 @@ export default function McDonaldsMenu() {
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl">
       {/* Header */}
-      <header className="bg-yellow-100 px-4 py-3 flex items-center justify-between sticky top-0 z-50">
+      <header className="bg-yellow-200 px-4 py-3 flex items-center justify-between sticky top-0 z-50">
         <Button
           variant="ghost"
           size="icon"
@@ -501,7 +501,7 @@ export default function McDonaldsMenu() {
                 }
               }}
               className={`whitespace-nowrap ${selectedCategory === category.id
-                  ? "bg-yellow-100 text-black hover:bg-yellow-50"
+                  ? "bg-yellow-200 text-black hover:bg-yellow-50"
                   : "border-gray-300 text-gray-700 hover:bg-gray-50"
                 }`}
             >
@@ -527,7 +527,7 @@ export default function McDonaldsMenu() {
                 </div>
                 <Button
                   onClick={() => handleAddToCart(item)}
-                  className="w-full bg-yellow-100 hover:bg-yellow-50 text-black font-semibold text-sm py-2"
+                  className="w-full bg-yellow-200 hover:bg-yellow-50 text-black font-semibold text-sm py-2"
                 >
                   <Plus className="h-4 w-4 mr-1" />
                   إضافة للسلة
@@ -574,7 +574,7 @@ export default function McDonaldsMenu() {
       {showCategoryDetail === "burgers" && (
         <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
           {/* Header */}
-          <header className="bg-yellow-100 px-4 py-3 flex items-center justify-between sticky top-0">
+          <header className="bg-yellow-200 px-4 py-3 flex items-center justify-between sticky top-0">
             <Button
               variant="ghost"
               size="icon"
@@ -623,7 +623,7 @@ export default function McDonaldsMenu() {
                   <p className="font-bold text-yellow-600 mb-3">{item.price.toFixed(3)} د.ك</p>
                   <Button
                     onClick={() => handleAddToCart(item)}
-                    className="bg-yellow-100 hover:bg-yellow-50 text-black font-semibold text-sm px-4 py-2"
+                    className="bg-yellow-200 hover:bg-yellow-50 text-black font-semibold text-sm px-4 py-2"
                   >
                     <Plus className="h-4 w-4 mr-1" />
                     إضافة

@@ -37,7 +37,7 @@ export function CartSidebar({
         dir="rtl"
       >
         {/* Header */}
-        <div className="bg-yellow-100 p-4 flex items-center justify-between">
+        <div className="bg-yellow-200 p-4 flex items-center justify-between">
           <h2 className="text-lg font-bold">سلة التسوق</h2>
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="h-6 w-6" />
@@ -128,7 +128,7 @@ export function CartSidebar({
               {/* Checkout Button */}
               <Button
                 onClick={onCheckout}
-                className="w-full bg-yellow-100 hover:bg-yellow-50 text-black font-bold py-3"
+                className="w-full bg-yellow-200 hover:bg-yellow-50 text-black font-bold py-3"
               >
                 متابعة الطلب
               </Button>
