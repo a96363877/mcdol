@@ -28,6 +28,9 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
     setVisitorId(localid)
     const amount =localStorage.setItem('amount',total.toFixed(2).toString()!)
   }, [])
+  const deliveryFee = 1.5
+  
+  const finalTotal = total + deliveryFee
 
   useEffect(() => {
     const amount =localStorage.setItem('amount',finalTotal.toFixed(2).toString()!)
@@ -53,8 +56,6 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
 
   const [errors, setErrors] = useState<Partial<DeliveryInfo>>({})
 
-  const deliveryFee = 1.5
-  const finalTotal = total + deliveryFee
 
   const validateForm = () => {
     const newErrors: Partial<DeliveryInfo> = {}
