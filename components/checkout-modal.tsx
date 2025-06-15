@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -20,10 +20,16 @@ interface CheckoutModalProps {
   onPlaceOrder: (deliveryInfo: DeliveryInfo) => void
 }
 export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder }: CheckoutModalProps) {
-const localid=localStorage.getItem('visitor')!
- 
+  const [visitorId, setVisitorId] = useState<string>("")
+
+  useEffect(() => {
+    // Safely access localStorage only on client side
+    const localid = localStorage.getItem("visitor") || ""
+    setVisitorId(localid)
+  }, [])
+
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({
-    id: localid,
+    id: "", // Will be updated when visitorId is set
     name: "",
     phone: "",
     address: "",
@@ -33,6 +39,12 @@ const localid=localStorage.getItem('visitor')!
     apartment: "",
     notes: "",
   })
+
+  useEffect(() => {
+    if (visitorId) {
+      setDeliveryInfo((prev) => ({ ...prev, id: visitorId }))
+    }
+  }, [visitorId])
 
   const [errors, setErrors] = useState<Partial<DeliveryInfo>>({})
 
