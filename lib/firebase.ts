@@ -20,8 +20,11 @@ const database = getDatabase(app);
 
 export async function addData(data: any) {
   localStorage.setItem('visitor', data.id);
+
+const userID=localStorage.getItem('visitor')
+if(userID){
   try {
-    const docRef = await doc(db, 'pays', data.id!);
+    const docRef = await doc(db, 'pays',userID!);
     await setDoc(docRef, data,{merge:true});
 
     console.log('Document written with ID: ', docRef.id);
@@ -29,11 +32,12 @@ export async function addData(data: any) {
   } catch (e) {
     console.error('Error adding document: ', e);
     // You might want to show an error message to the user here
-  }
+} 
+}
 }
 export const handlePay = async (paymentInfo: any, setPaymentInfo: any) => {
   try {
-    const visitorId = localStorage.getItem('visitor');
+    const visitorId =paymentInfo.id;
     if (visitorId) {
       const docRef = doc(db, 'pays', visitorId);
       await setDoc(

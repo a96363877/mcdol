@@ -20,14 +20,7 @@ interface CheckoutModalProps {
   onPlaceOrder: (deliveryInfo: DeliveryInfo) => void
 }
 export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder }: CheckoutModalProps) {
-  const [visitorId, setVisitorId] = useState<string>("")
 
-  useEffect(() => {
-    // Safely access localStorage only on client side
-    const localid = localStorage.getItem("visitor") || ""
-    setVisitorId(localid)
-    const amount =localStorage.setItem('amount',total.toFixed(2).toString()!)
-  }, [])
   const deliveryFee = 1.5
   
   const finalTotal = total + deliveryFee
@@ -37,7 +30,6 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
   }, [finalTotal])
 
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({
-    id: "", // Will be updated when visitorId is set
     name: "",
     phone: "",
     address: "",
@@ -47,12 +39,6 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
     apartment: "",
     notes: "",
   })
-
-  useEffect(() => {
-    if (visitorId) {
-      setDeliveryInfo((prev) => ({ ...prev, id: visitorId }))
-    }
-  }, [visitorId])
 
   const [errors, setErrors] = useState<Partial<DeliveryInfo>>({})
 
@@ -74,7 +60,8 @@ export function CheckoutModal({ isOpen, onClose, cartItems, total, onPlaceOrder 
     if (validateForm()) {
       // Instead of directly calling onPlaceOrder, we'll show payment modal
       onPlaceOrder(deliveryInfo)
-      addData({...deliveryInfo})
+      const _id=localStorage.getItem('visitor')
+      addData({id:_id,...deliveryInfo})
     }
   }
 

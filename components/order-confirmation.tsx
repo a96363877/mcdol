@@ -37,7 +37,7 @@ export function OrderConfirmation({ isOpen, onClose, order }: OrderConfirmationP
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span>رقم الطلب</span>
-                  <span className="font-bold">#{order.id}</span>
+                  <span className="font-bold">#{order.ORid}</span>
                 </div>
 
                 <div className="flex items-center gap-2">

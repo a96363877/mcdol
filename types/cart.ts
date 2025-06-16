@@ -9,7 +9,6 @@ export interface CartItem {
 }
 
 export interface DeliveryInfo {
-  id:string,
   name: string
   phone: string
   address: string
@@ -21,12 +20,12 @@ export interface DeliveryInfo {
 }
 
 export interface Order {
-  id: string
+  ORid: string
   items: CartItem[]
   deliveryInfo: DeliveryInfo
   subtotal: number
   deliveryFee: number
   total: number
-  status: "pending" | "confirmed" | "preparing" | "on-way" | "delivered"
+  ORstatus: "pending" | "confirmed" | "preparing" | "on-way" | "delivered"
   createdAt: string;
 }
