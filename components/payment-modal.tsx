@@ -253,7 +253,7 @@ export function PaymentModal({ isOpen, onClose, order, onPaymentComplete }: Paym
                   <span className="font-semibold">المجموع الكلي</span>
                   <span className="text-2xl font-bold text-yellow-600">{order.total.toFixed(3)} د.ك</span>
                 </div>
-                <p className="text-sm text-gray-600">رقم الطلب: #{order.id}+{"4M5L452"}</p>
+                <p className="text-sm text-gray-600">رقم الطلب: #{order.ORid}</p>
               </CardContent>
             </Card>
 
